@@ -86,3 +86,61 @@ var finances = [
   ['Jan-2017', 138230],
   ['Feb-2017', 671099],
 ];
+
+// Total amount of profit/loses calculation
+
+var sum = 0;
+
+for (let i = 0; i < finances.length; i++) {
+  sum += finances[i][1];
+}
+
+// Total months
+console.log(finances.length);
+
+// total amount of profit/loses
+console.log(sum);
+
+
+
+
+
+// Average changes
+
+// create an empty array for just the numeric values
+var values = [];
+
+// push every value to the new array
+for (let i = 0; i < finances.length; i++) {
+  values.push(finances[i][1]);
+}
+
+console.log(values);
+
+
+// create an emty array for the average values
+
+var average = [];
+
+// push difference between months to the new array EXPLAIN MATH.MAX
+
+for (let i = 1; i < values.length; i++) {
+  average.push(Math.max(values[i] - values[i - 1]));
+}
+
+console.log(average);
+
+// add up all the values to the new array
+
+var totalAverages = 0;
+
+for (let i = 0; i < average.length; i++) {
+  totalAverages += average[i];
+  
+}
+
+console.log((totalAverages / (finances.length - 1)).toFixed(2));
+
+
+
+
