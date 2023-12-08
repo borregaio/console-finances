@@ -136,11 +136,31 @@ var totalAverages = 0;
 
 for (let i = 0; i < average.length; i++) {
   totalAverages += average[i];
-  
+
 }
 
-console.log((totalAverages / (finances.length - 1)).toFixed(2));
+var averageChange = (totalAverages / (finances.length - 1)).toFixed(2);
 
 
 
 
+// greatest increase
+
+const maximum = Math.max(...average);
+console.log(maximum);
+
+//greatest decrease
+
+// const minimum = average.indexOf(Math.min(...average));
+// console.log(minimum);
+
+
+// console.log(
+//   "Financial Analysis\n------------------\nTotal Months = " + finances.length + " \nTotal = $" + sum + "\nAverage Change = " + averageChange + "Greatest Increase in Profits/Losses = " + finances[maximum]
+// );
+
+
+// for (let i = 0; i < finances.length; i++) {
+//   Math.max(...finances[i][1]);
+  
+// }
