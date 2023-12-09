@@ -87,19 +87,23 @@ var finances = [
   ['Feb-2017', 671099],
 ];
 
-// Total amount of profit/loses calculation
-
-var sum = 0;
-
-for (let i = 0; i < finances.length; i++) {
-  sum += finances[i][1];
-}
 
 // Total months
-console.log(finances.length);
+console.log("This are the total months " + finances.length);
 
-// total amount of profit/loses
-console.log(sum);
+
+
+
+
+// Total amount of profit/loses calculation
+
+var totalValue = 0;
+
+for (let i = 0; i < finances.length; i++) {
+  totalValue += finances[i][1];
+}
+
+console.log("This is tht total value " + totalValue);
 
 
 
@@ -108,59 +112,87 @@ console.log(sum);
 // Average changes
 
 // create an empty array for just the numeric values
-var values = [];
+var monthlyValues = [];
 
 // push every value to the new array
 for (let i = 0; i < finances.length; i++) {
-  values.push(finances[i][1]);
+  monthlyValues.push(finances[i][1]);
 }
 
-console.log(values);
+// console.log(monthlyValues);
+
+
+
+
+
+
 
 
 // create an emty array for the average values
 
-var average = [];
+var averageChanges = [];
 
 // push difference between months to the new array EXPLAIN MATH.MAX
 
-for (let i = 1; i < values.length; i++) {
-  average.push(Math.max(values[i] - values[i - 1]));
+for (let i = 1; i < monthlyValues.length; i++) {
+  averageChanges.push((monthlyValues[i] - monthlyValues[i - 1]));
 }
-
-console.log(average);
 
 // add up all the values to the new array
 
-var totalAverages = 0;
+var averageTotal = 0;
 
-for (let i = 0; i < average.length; i++) {
-  totalAverages += average[i];
-
+for (let i = 0; i < averageChanges.length; i++) {
+  averageTotal += averageChanges[i];
 }
 
-var averageChange = (totalAverages / (finances.length - 1)).toFixed(2);
+var averageChanges = (averageTotal / (finances.length - 1)).toFixed(2);
+
+console.log("This is the average change " + averageChanges);
+
+
+
+
+var arr = [];
+
+for (let i = 1; i < finances.length; i++) {
+  arr.push(Math.max(finances[0][i] - finances[0][i - 1]));
+  
+}
+
+
+
 
 
 
 
 // greatest increase
 
-const maximum = Math.max(...average);
-console.log(maximum);
+const maxIncrease = Math.max(...averageChanges);
+console.log(maxIncrease);
 
-//greatest decrease
 
-// const minimum = average.indexOf(Math.min(...average));
-// console.log(minimum);
+// var arr = [];
+
+// for (let i = 0; i < finances.length; i++) {
+//   arr.push(Math.max(...finances[i]));
+// }
+
+// console.log(arr);
+
 
 
 // console.log(
-//   "Financial Analysis\n------------------\nTotal Months = " + finances.length + " \nTotal = $" + sum + "\nAverage Change = " + averageChange + "Greatest Increase in Profits/Losses = " + finances[maximum]
+//   "Financial Analysis\n------------------\nTotal Months = " + finances.length + " \nTotal = $" + totalValue + "\nAverage Change = " + averageChange + "Greatest Increase in Profits/Losses = " + finances[maximum]
 // );
 
 
-// for (let i = 0; i < finances.length; i++) {
-//   Math.max(...finances[i][1]);
-  
-// }
+
+
+
+
+
+
+
+
+
