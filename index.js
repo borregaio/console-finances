@@ -88,111 +88,76 @@ var finances = [
 ];
 
 
-// Total months
-console.log("This are the total months " + finances.length);
+// This is the total number of months included in the dataset
+console.log("These are the total months in the array: " + finances.length);
 
 
-
-
-
-// Total amount of profit/loses calculation
-
-var totalValue = 0;
+// This is the net total amount of Profit/Losses over the entire period
+var totalAmount = 0;
 
 for (let i = 0; i < finances.length; i++) {
-  totalValue += finances[i][1];
+  totalAmount += finances[i][1];
 }
 
-console.log("This is tht total value " + totalValue);
+console.log("This is the total amount: " + totalAmount);
 
 
-
-
-
-// Average changes
-
-// create an empty array for just the numeric values
-var monthlyValues = [];
-
-// push every value to the new array
-for (let i = 0; i < finances.length; i++) {
-  monthlyValues.push(finances[i][1]);
-}
-
-// console.log(monthlyValues);
-
-
-
-
-
-
-
-
-// create an emty array for the average values
-
-var averageChanges = [];
-
-// push difference between months to the new array EXPLAIN MATH.MAX
-
-for (let i = 1; i < monthlyValues.length; i++) {
-  averageChanges.push((monthlyValues[i] - monthlyValues[i - 1]));
-}
-
-// add up all the values to the new array
-
-var averageTotal = 0;
-
-for (let i = 0; i < averageChanges.length; i++) {
-  averageTotal += averageChanges[i];
-}
-
-var averageChanges = (averageTotal / (finances.length - 1)).toFixed(2);
-
-console.log("This is the average change " + averageChanges);
-
-
-
-
-var arr = [];
+// This is the average of the changes in Profit/Losses over the entire period
+var sumOfChanges = 0;
 
 for (let i = 1; i < finances.length; i++) {
-  arr.push(Math.max(finances[0][i] - finances[0][i - 1]));
-  
+  var currentFinancialValue = finances[i][1];
+  var previousFinancialValue = finances[i - 1][1];
+  var change = currentFinancialValue - previousFinancialValue;
+
+  sumOfChanges += change;
 }
 
+var averageChanges = (sumOfChanges / (finances.length - 1)).toFixed(2);
+
+console.log("This is the average change: " + averageChanges);
 
 
+// This is the greatest increase in Profit
+var greatestIncrease = 0;
+var greatestIncreaseMonth = '';
+
+for (let i = 1; i < finances.length; i++) {
+  const currentFinancialValue = finances[i][1];
+  const previousFinancialValue = finances[i - 1][1];
+  const increase = currentFinancialValue - previousFinancialValue;
+
+  if (increase > greatestIncrease) {
+    greatestIncrease = increase;
+    greatestIncreaseMonth = finances[i][0];
+  }
+}
+
+console.log("This is the greatest increase: " + greatestIncrease);
 
 
+// This is the greatest decrease in Losses
+var greatestDecrease = 0;
+var greatestDecreaseMonth = '';
+
+for (let i = 1; i < finances.length; i++) {
+  const currentFinancialValue = finances[i][1];
+  const previousFinancialValue = finances[i - 1][1];
+  const decrease = previousFinancialValue - currentFinancialValue;
+
+  if (decrease > greatestDecrease) {
+    greatestDecrease = decrease;
+    greatestDecreaseMonth = finances[i][0];
+  }
+}
+
+console.log("This is the greatest decrease: " + greatestDecrease);
 
 
-// greatest increase
-
-const maxIncrease = Math.max(...averageChanges);
-console.log(maxIncrease);
-
-
-// var arr = [];
-
-// for (let i = 0; i < finances.length; i++) {
-//   arr.push(Math.max(...finances[i]));
-// }
-
-// console.log(arr);
-
-
-
-// console.log(
-//   "Financial Analysis\n------------------\nTotal Months = " + finances.length + " \nTotal = $" + totalValue + "\nAverage Change = " + averageChange + "Greatest Increase in Profits/Losses = " + finances[maximum]
-// );
-
-
-
-
-
-
-
-
-
-
+console.log(
+  "Financial Analysis\n------------------\nTotal Months = " + finances.length + 
+  "\nTotal = $" + totalAmount + "\nAverage Change = " + averageChanges + 
+  "\nGreatest Increase in Profits/Losses = " + greatestIncreaseMonth + ", " + "$" + greatestIncrease +
+  "\nGreatest Decrease in Profits/Losses = " + greatestDecreaseMonth + ", " + "$" + greatestDecrease
+);
 
