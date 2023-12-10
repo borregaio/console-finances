@@ -88,11 +88,13 @@ var finances = [
 ];
 
 
-// This is the total number of months included in the dataset
-console.log("These are the total months in the array: " + finances.length);
+// 1. This is the total number of months included in the dataset
+var totalMonths = finances.length;
+
+console.log("These are the total months in the array: " + totalMonths);
 
 
-// This is the net total amount of Profit/Losses over the entire period
+// 2. This is the net total amount of Profit/Losses over the entire period
 var totalAmount = 0;
 
 for (let i = 0; i < finances.length; i++) {
@@ -102,7 +104,7 @@ for (let i = 0; i < finances.length; i++) {
 console.log("This is the total amount: " + totalAmount);
 
 
-// This is the average of the changes in Profit/Losses over the entire period
+// 3. This is the average of the changes in Profit/Losses over the entire period
 var sumOfChanges = 0;
 
 for (let i = 1; i < finances.length; i++) {
@@ -118,14 +120,14 @@ var averageChanges = (sumOfChanges / (finances.length - 1)).toFixed(2);
 console.log("This is the average change: " + averageChanges);
 
 
-// This is the greatest increase in Profit
+// 4. This is the greatest increase in Profit
 var greatestIncrease = 0;
 var greatestIncreaseMonth = '';
 
 for (let i = 1; i < finances.length; i++) {
-  const currentFinancialValue = finances[i][1];
-  const previousFinancialValue = finances[i - 1][1];
-  const increase = currentFinancialValue - previousFinancialValue;
+  var currentFinancialValue = finances[i][1];
+  var previousFinancialValue = finances[i - 1][1];
+  var increase = currentFinancialValue - previousFinancialValue;
 
   if (increase > greatestIncrease) {
     greatestIncrease = increase;
@@ -136,14 +138,14 @@ for (let i = 1; i < finances.length; i++) {
 console.log("This is the greatest increase: " + greatestIncrease);
 
 
-// This is the greatest decrease in Losses
+// 5. This is the greatest decrease in Losses
 var greatestDecrease = 0;
 var greatestDecreaseMonth = '';
 
 for (let i = 1; i < finances.length; i++) {
-  const currentFinancialValue = finances[i][1];
-  const previousFinancialValue = finances[i - 1][1];
-  const decrease = previousFinancialValue - currentFinancialValue;
+  var currentFinancialValue = finances[i][1];
+  var previousFinancialValue = finances[i - 1][1];
+  var decrease = previousFinancialValue - currentFinancialValue;
 
   if (decrease > greatestDecrease) {
     greatestDecrease = decrease;
@@ -155,7 +157,7 @@ console.log("This is the greatest decrease: " + greatestDecrease);
 
 
 console.log(
-  "Financial Analysis\n------------------\nTotal Months = " + finances.length + 
+  "Financial Analysis\n------------------\nTotal Months = " + totalMonths + 
   "\nTotal = $" + totalAmount + "\nAverage Change = " + averageChanges + 
   "\nGreatest Increase in Profits/Losses = " + greatestIncreaseMonth + ", " + "$" + greatestIncrease +
   "\nGreatest Decrease in Profits/Losses = " + greatestDecreaseMonth + ", " + "$" + greatestDecrease
